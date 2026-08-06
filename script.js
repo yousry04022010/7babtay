@@ -499,10 +499,10 @@ function initGift(){
    11. TIMELINE — live counters + verbatim letter reveal
    ========================================================= */
 const timelineData = [
-  {date:new Date(2026,1,28,0,0), title:'28 فبراير', label:'يوم دخلتِ حياتي... يوم من أحلى أيامي.'},
-  {date:new Date(2026,3,10,8,0), title:'10 أبريل — 8:00 صباحاً', label:'يوم قولتلك بحبك لأول مرة.'},
-  {date:new Date(2026,6,2,0,0), title:'2 يوليو', label:'يوم من أصعب أيامي.'},
-  {date:new Date(2026,6,18,0,0), title:'18 يوليو', label:'يوم رجعت فيا الروح تاني.'}
+  {date:new Date(2026,2,28), title:'28 فبراير', label:'يوم دخلتِ حياتي... يوم من أحلى أيامي.'},
+  {date:new Date(2026,3,10,8,), title:'10 أبريل — 8:00 صباحاً', label:'يوم قولتلك بحبك لأول مرة.'},
+  {date:new Date(2026,7,2), title:'2 يوليو', label:'يوم من أصعب أيامي.'},
+  {date:new Date(2026,7,18), title:'18 يوليو', label:'يوم رجعت فيا الروح تاني.'}
 ];
 
 function pad(n){ return n.toString().padStart(2,'0'); }
