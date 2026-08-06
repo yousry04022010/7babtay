@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>هدى ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700;900&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= LOADING SCREEN ================= -->
+<div id="loading-screen">
+  <div class="loader-heart-wrap">
+    <svg class="loader-heart" viewBox="0 0 100 90">
+      <path d="M50 85 C 20 60, 0 40, 0 22 C 0 5, 18 -3, 32 8 C 40 14, 47 22, 50 28 C 53 22, 60 14, 68 8 C 82 -3, 100 5, 100 22 C 100 40, 80 60, 50 85 Z"/>
+    </svg>
+  </div>
+  <p class="loader-text">جاري تحضير الرحلة<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+  <div class="loader-bar"><div class="loader-bar-fill" id="loaderFill"></div></div>
+</div>
+
+<!-- Global falling petals canvas (persists across all sections) -->
+<canvas id="petals-canvas"></canvas>
+
+<!-- Cursor rose trail -->
+<div id="cursor-rose"></div>
+
+<!-- ================= MAIN EXPERIENCE ================= -->
+<main id="experience" class="hidden">
+
+  <!-- ============ SECTION 0 : HERO ============ -->
+  <section id="hero" class="section">
+    <canvas id="hero-3d"></canvas>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow" id="typedIntro"></p>
+      <h1 class="hero-name">هدى <span class="heart-emoji">❤️</span></h1>
+      <button class="btn-primary" id="startJourneyBtn">
+        <span>ابدئي الرحلة</span>
+        <i class="btn-rose">🌹</i>
+      </button>
+    </div>
+    <div class="scroll-hint">مرّري لتكملي الرحلة ↓</div>
+  </section>
+
+  <!-- ============ SECTION 1 : GAME ============ -->
+  <section id="game" class="section dark-panel" data-aos="fade-up">
+    <h2 class="section-title">اعرفي مين بيحبك 🎮</h2>
+    <p class="section-sub">لعبة صغيرة... وكل إجابة بتفتح رسالة</p>
+
+    <div id="gameStart" class="game-box glass">
+      <p>هل أنتِ مستعدة تعرفي مين بيحبك أكتر من أي حد في الدنيا؟</p>
+      <button class="btn-secondary" id="gameStartBtn">ابدئي اللعبة</button>
+    </div>
+
+    <div id="gameQuestions" class="game-box glass hidden"></div>
+
+    <div id="gameResult" class="game-box glass hidden">
+      <p class="game-result-line">الفائز بقلب هدى هو...</p>
+      <h3 class="game-winner">أنا ❤️</h3>
+      <div class="rose-burst-target"></div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2 : 3D BOOK ============ -->
+  <section id="book-section" class="section" data-aos="fade-up">
+    <h2 class="section-title">دفتر الذكريات 📖</h2>
+    <p class="section-sub">قلّبي الصفحات...</p>
+    <div class="book-wrap">
+      <div class="book" id="theBook">
+        <!-- pages injected by JS -->
+      </div>
+      <div class="book-nav">
+        <button id="prevPageBtn" class="btn-icon">السابقة →</button>
+        <span id="pageIndicator">1 / 6</span>
+        <button id="nextPageBtn" class="btn-icon">← التالية</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3 : SPACE JOURNEY ============ -->
+  <section id="space-section" class="section dark-panel">
+    <canvas id="space-canvas"></canvas>
+    <div class="space-content">
+      <h2 class="section-title light">رحلة بين النجوم 🌌</h2>
+      <p class="section-sub light">اضغطي على كل نجمة عشان تفتحي رسالة</p>
+      <div id="spaceMessage" class="space-message glass hidden"></div>
+      <div id="spaceFinalName" class="space-final hidden">هدى <span>❤️</span></div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4 : ROSE GARDEN ============ -->
+  <section id="garden-section" class="section" data-aos="fade-up">
+    <h2 class="section-title">حديقة الورد 🌹</h2>
+    <p class="section-sub">كل وردة فيها كلمة... واللي في الآخر فيها كل حاجة</p>
+    <div class="garden-grid" id="gardenGrid"></div>
+    <div id="gardenFinalMsg" class="garden-final glass hidden"></div>
+  </section>
+
+  <!-- ============ SECTION 5 : GIFT BOX ============ -->
+  <section id="gift-section" class="section dark-panel">
+    <h2 class="section-title light">هدية ليكِ 🎁</h2>
+    <div class="gift-wrap">
+      <div class="gift-box" id="giftBox">
+        <div class="gift-lid">🎁</div>
+        <div class="gift-base"></div>
+      </div>
+      <div id="giftContents" class="gift-contents hidden">
+        <div class="gift-item">🌹</div>
+        <div class="gift-item">❤️</div>
+        <div class="gift-item gift-name">هدى</div>
+        <p class="gift-message">أحلى حاجة حصلتلي في حياتي إنك أنتِ.</p>
+      </div>
+      <p class="gift-hint">دوسي على الهدية</p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 6 : TIME MACHINE / TIMELINE ============ -->
+  <section id="timeline-section" class="section">
+    <h2 class="section-title">آلة الزمن ⏳</h2>
+    <p class="section-sub">كل تاريخ... له حكاية ما بتتنسيش</p>
+
+    <div class="timeline-grid" id="timelineGrid">
+      <!-- 4 cards injected by JS with live counters -->
+    </div>
+
+    <div class="full-letter glass" id="fullLetter">
+      <!-- message revealed word by word, injected by JS. Text kept 100% verbatim. -->
+    </div>
+  </section>
+
+  <!-- ============ SECTION 7 : MUSIC PLAYER ============ -->
+  <section id="music-section" class="section dark-panel">
+    <h2 class="section-title light">أغنيتنا 🎵</h2>
+    <p class="section-sub light">جورج وسوف - حلف القمر</p>
+    <div class="player glass">
+      <div class="vinyl-wrap">
+        <div class="vinyl" id="vinylDisc">
+          <div class="vinyl-label">حلف القمر</div>
+        </div>
+        <div class="tonearm" id="tonearm"></div>
+      </div>
+      <div class="player-controls">
+        <label class="btn-secondary file-label" for="audioUpload">📂 اختاري ملف الأغنية</label>
+        <input type="file" id="audioUpload" accept="audio/*" hidden>
+        <button id="playPauseBtn" class="btn-icon round" disabled>▶</button>
+        <audio id="audioPlayer"></audio>
+      </div>
+      <p class="player-hint" id="playerHint">لحقوق النشر، لازم تضيفي ملف الأغنية بنفسك عشان تشتغل هنا.</p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 8 : ENDING ============ -->
+  <section id="ending-section" class="section">
+    <canvas id="fireworks-canvas"></canvas>
+    <div class="ending-content">
+      <h2 class="ending-name">هدى</h2>
+      <p class="ending-love">بحبك ❤️</p>
+      <p class="ending-sorry">مش تزعلي مني تاني.</p>
+      <div class="giant-rose" id="giantRose">
+        <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
+        <div class="petal p4"></div><div class="petal p5"></div><div class="petal p6"></div>
+        <div class="petal p7"></div><div class="petal p8"></div>
+        <div class="rose-center"></div>
+      </div>
+      <p class="the-end">النهاية</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= LIBRARIES (CDN) ================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.16/typed.umd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+<script src="script.js"></script>
+</body>
+</html>
